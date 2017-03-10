@@ -1,0 +1,134 @@
+body{
+	font-family: 'PT Sans', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	background-image: url("../images/bgHome.jpg");
+	background-size: 100%;
+}
+
+.wrapper{
+
+}
+.header {
+	width: 100%;
+	height: 200px;
+	background-image: url('../images/vintage_garage.jpg');
+	position: relative;
+	top:0;
+	left:0;
+	margin-top:0;
+	background-position: center center;
+}
+.header-stick {
+	background-color: rgba(221, 221, 221, 0.9);
+	height: 50px;
+	margin-left: 30px;
+	width: 35%;
+}
+.select-quantity {
+	width: 100%;
+	float: left;
+	margin: 5px;
+}
+.select-quantity button {
+	padding: 6px 4px;
+	background-color: #6a91a0;
+	color: #fff;
+	cursor: pointer;
+	margin: 0;
+	width: 100%;
+}
+.select-quantity button:hover {
+	color: #fff;
+}
+.select-quantity .form-group {
+	margin-bottom: 0;
+}
+.page-title-wrapper {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 80%;
+	margin: 0 auto;
+	display: block;
+	float: left;
+}
+.page-title {
+	color: #eee;
+	text-align: center;
+	width: 100%;
+}
+.opacity {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left:0;
+	background: rgba(0,0,0,0.7)
+}
+.main-content {
+	margin-top: 30px;
+	color: #333;
+}
+.item {
+	padding: 15px 10px;
+	background-color: rgba(221, 221, 221, 0.9);
+	border: 1px solid #6a91a0;
+	width: 48%;
+	float: left;
+	display: table;
+	margin: 0 1% 30px 1%;
+}
+.center-block {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 10px;
+}
+
+.col-clock {
+	text-align: center;
+}
+.center-block:last-child {
+	padding: 0;
+}
+.no-of-item {
+	background-color: #fff;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	font-size: 30px;
+	line-height: 40px;
+	border: 0.5px solid #6a91a0;
+	font-weight: bold;
+}
+
+.test {
+	width: 100%;
+	display: block;
+	background-color: #1b6d85;
+	height: 150px;
+	margin: 10px;
+	font-size: 50px;
+	color: #fff;
+	text-align: center;
+	line-height: 150px;
+}
+.actions-btn {
+	float: left;
+	width: 100%;
+}
+
+.actions-btn button:first-child {
+	margin-right: 5px;
+}
+.actions-btn .btn {
+	padding: 6px 4px;
+	background-color: #6a91a0;
+	color: #fff;
+	cursor: pointer;
+	margin: 0 0 10px 0;
+	width: 100%;
+}
