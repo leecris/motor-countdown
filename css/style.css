@@ -2,9 +2,10 @@ body{
 	font-family: 'PT Sans', sans-serif;
 	font-family: 'Roboto', sans-serif;
 	font-family: 'Open Sans', sans-serif;
-	font-size: 1em;
+	font-size: 12px;
 	background-image: url("../images/bgHome.jpg");
 	background-size: 100%;
+	font-weight: 500;
 }
 
 .wrapper{
@@ -131,4 +132,15 @@ body{
 	cursor: pointer;
 	margin: 0 0 10px 0;
 	width: 100%;
+}
+.login-wrapper {
+	width: 100%;
+	height: 100%;
+	position: static;
+	top: 0;
+	left: 0;
+	background: #ccc;
+}
+input {
+	font-weight: 700;
 }
