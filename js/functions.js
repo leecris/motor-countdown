@@ -66,17 +66,45 @@
                 countdown: true,
                 callbacks: {
                     init: function() {
-                        if (responsiveVoice.voiceSupport()) {
-                            responsiveVoice.speak("Xin mời quý khách "+name+" có xe với biển số "+motorNo+" đến nhận xe", "Vietnamese Male", {
-                                volume: 1
-                            });
-                        }
+
                     },
                     stop: function () {
 
                     }
                 }
             });
+        })
+
+        // Show/hide setting
+        $(".btn-toggle").click(function(){
+            // Check current data display
+            var $header = $('.header-stick');
+            $header.slideToggle();
+        })
+        var messageInterval;
+        // Run sound notication
+        $(".btn-noti").click(function(e) {
+            e.preventDefault();
+            var message = $("#noti-text").val();
+            var interval = $("#noti-time").val();
+            if (responsiveVoice.voiceSupport()) {
+                responsiveVoice.speak(message, "Vietnamese Male", {
+                    volume: 1
+                });
+            }
+            messageInterval = setInterval(function(){
+                if (responsiveVoice.voiceSupport()) {
+                    responsiveVoice.speak(message, "Vietnamese Male", {
+                        volume: 1
+                    });
+                }
+            },interval*60*1000);
+
+        })
+        $(".btn-stop-noti").click(function(e) {
+            e.preventDefault();
+            clearInterval(messageInterval);
+
         })
     });
     function getParameterByName(name, url) {
