@@ -5,6 +5,7 @@ body{
 	font-size: 12px;
 	background-size: 100%;
 	font-weight: 500;
+	background-color: #000000;
 }
 
 .wrapper{
@@ -122,6 +123,7 @@ body{
 	line-height: 40px;
 	border: 0.5px solid #6a91a0;
 	font-weight: bold;
+	margin-top: 0px;
 }
 
 .test {

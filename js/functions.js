@@ -49,7 +49,7 @@
                     },
                     stop: function () {
                         if (responsiveVoice.voiceSupport()) {
-                            responsiveVoice.speak("Xin mời quý khách "+name+" có xe với biển số "+motorNo+" đến nhận xe", "Vietnamese Male", {
+                            responsiveVoice.speak("Xin mời quý khách "+name+" có xe với biển số "+motorNo+" đến quầy thu ngân làm thủ tục nhận xe", "Vietnamese Male", {
                                 volume: 1
                             });
                         }
