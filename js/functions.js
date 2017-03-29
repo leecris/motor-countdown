@@ -1,5 +1,6 @@
 ;(function($){
     var ItemsArr = [];
+	
     $(document).ready(function() {
         // Get number from param
         var noItems = getParameterByName('no') !== null ? getParameterByName('no') : 6;
@@ -33,6 +34,35 @@
                 ItemsArr.push(clock);
             }
         }
+		
+		// implements playsound in queue
+		var playQueue = [];
+		var playInterval = -1;
+		
+		function playSound(custom) {
+			responsiveVoice.speak("Xin mời quý khách "+custom.name+" có xe với biển số "+custom.motorNo+" đến quầy thu ngân làm thủ tục nhận xe", "Vietnamese Male", {
+				volume: 1
+			});
+		}
+		
+		function addToPlayQueue(customer) {
+			playQueue.push(customer);
+			
+			if (playInterval < 0 && playQueue.length == 1) {
+				var customFirst = playQueue.shift();
+				playSound(customFirst);
+				
+				playInterval = setInterval(function() {
+					var custom = playQueue.shift();
+					playSound(custom);
+					
+					if (playQueue.length == 0) {
+						clearInterval(playInterval);
+						playInterval = -1;
+					}
+				}, 20000);
+			}
+		}
 
         $listContainer.delegate('.btn-start','click',function(){
             var $item = $(this).parents('.item');
@@ -40,22 +70,20 @@
             var inputTime = $item.find('.input-time').val() * 60;
             var name = $item.find(".repairer").val();
             var motorNo = $item.find(".motor-no").val().replace(/-|_| /gi,"").split('').join(' ');
-            var clock = new FlipClock($item.find('.clock-cd'),inputTime,{
-                countdown: true,
-                callbacks: {
-                    init: function() {
-                        console.log('Init');
-
-                    },
-                    stop: function () {
-                        if (responsiveVoice.voiceSupport()) {
-                            responsiveVoice.speak("Xin mời quý khách "+name+" có xe với biển số "+motorNo+" đến quầy thu ngân làm thủ tục nhận xe", "Vietnamese Male", {
-                                volume: 1
-                            });
-                        }
-                    }
-                }
-            });
+            var clock = new FlipClock($item.find('.clock-cd'),inputTime,{countdown: true});
+			
+			var playSoundTimer = $(this).data('play-sound');
+			if (playSoundTimer) {
+				clearTimeout(playSoundTimer);
+			}
+			
+			if (responsiveVoice.voiceSupport()) {
+				playSoundTimer = setTimeout(function() {
+					addToPlayQueue({name: name, motorNo: motorNo});
+					$(this).data('play-sound', undefined);
+				}, inputTime*1000);
+				$(this).data('play-sound', playSoundTimer);
+			}	
         })
         $listContainer.delegate('.btn-stop','click',function(){
             var $item = $(this).parents('.item');
